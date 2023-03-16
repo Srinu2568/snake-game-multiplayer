@@ -27,6 +27,7 @@ io.on('connection', client => {
     function handleJoinGame(roomName) {
       // const room = io.sockets.adapter.rooms[roomName];
       const room = io.sockets.adapter.rooms.get(roomName);
+      // console.log(io.sockets.adapter.rooms);
       let allUsers;
       if (room) {
         // allUsers = room.sockets;

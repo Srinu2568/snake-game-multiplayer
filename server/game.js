@@ -60,6 +60,9 @@ function gameLoop(state) {
     playerOne.pos.x += playerOne.vel.x;
     playerOne.pos.y += playerOne.vel.y;
 
+    playerTwo.pos.x += playerTwo.vel.x;
+    playerTwo.pos.y += playerTwo.vel.y;
+
     if (playerOne.pos.x < 0 || playerOne.pos.x > GRID_SIZE || playerOne.pos.y < 0 || playerOne.pos.y > GRID_SIZE) {
         return 2; // If player 1 goes off the grid/canvas we will return 2 as player 2 wins the game
     }
