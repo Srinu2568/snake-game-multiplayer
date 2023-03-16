@@ -2,6 +2,19 @@ const BG_COLOUR = '#231f20';
 const SNAKE_COLOUR = '#c2c2c2';
 const FOOD_COLOUR = '#e66916';
 
+const socket = io('http://localhost:3000', {
+  extraHeaders: {
+      "Access-Control-Allow-Origin": "http://localhost:8080"
+  },
+  transports: ['websocket']
+});
+
+socket.connect();
+socket.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
+});
+
+socket.on('init', handleInit);
 const gameScreen = document.getElementById('gameScreen');
 
 let canvas, ctx;
@@ -71,3 +84,8 @@ function paintPlayer(playerState, size, colour) {
 }
 
 paintGame(gameState);
+
+
+function handleInit(msg) {
+    console.log(msg);
+}
