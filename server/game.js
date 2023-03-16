@@ -3,6 +3,7 @@ const { GRID_SIZE } = require('./constants');
 module.exports = {
     createGameState,
     gameLoop,
+    getUpdatedVelocity,
 }
 
 function createGameState() {
@@ -50,11 +51,11 @@ function gameLoop(state) {
         playerOne.snake.push({...playerOne.pos}); // Push the current position of the player
         playerOne.pos.x += playerOne.vel.x; // And add velocity
         playerOne.pos.y += playerOne.vel.y;
-        randomFood(); // Food is missing now so we have to place the food in new position 
+        randomFood(state); // Food is missing now so we have to place the food in new position 
     }
 
     // checks if snake's head is bumped into any of the body
-    if (playerOne.vel.x || player.vel.y) {
+    if (playerOne.vel.x || playerOne.vel.y) {
         for (let cell of playerOne.snake) {
             if (cell.x === playerOne.pos.x && cell.y === playerOne.pos.y) {
                 return 2; // Player 2 wins
@@ -81,4 +82,21 @@ function randomFood(state) {
     }
 
     state.food = food
+}
+
+function getUpdatedVelocity(keyCode) {
+    switch (keyCode) {
+        case 37: { // left
+            return { x: -1, y: 0}
+        }
+        case 38: { // down
+            return { x: 0, y: -1}
+        }
+        case 39: { // right
+            return { x: 1, y: 0}
+        }
+        case 40: { // up
+            return { x: 0, y: 1}
+        }
+    }
 }

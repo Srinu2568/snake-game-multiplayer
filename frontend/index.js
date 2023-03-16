@@ -56,8 +56,8 @@ function init() {
     document.addEventListener('keydown', keydown);
 }
 
-function keydown(e) {
-    console.log(e.keyCode);
+function keydown(e) { // When ever a key is pressed we send that keyCode to server
+    socket.emit('keydown', e.keyCode);
 }
 
 init();
