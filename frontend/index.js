@@ -15,6 +15,8 @@ socket.on("connect_error", (err) => {
 });
 
 socket.on('init', handleInit);
+socket.on('gameState', handleGameState);
+
 const gameScreen = document.getElementById('gameScreen');
 
 let canvas, ctx;
@@ -83,9 +85,11 @@ function paintPlayer(playerState, size, colour) {
     }
 }
 
-paintGame(gameState);
-
-
 function handleInit(msg) {
     console.log(msg);
+}
+
+function handleGameState(gameState) {
+    gameState = JSON.parse(gameState);
+    requestAnimationFrame(() => paintGame(gameState));
 }
