@@ -6,7 +6,8 @@ const io = require('socket.io')(http, {
   cors: {
     origin: ["http://localhost:8080"],
     methods: ["GET", "POST"]
-  }
+  }, 
+  allowEIO3: true
 });
 
 const { initGame, gameLoop, getUpdatedVelocity } = require('./game');
@@ -23,17 +24,22 @@ io.on('connection', client => {
     client.on('newGame', handleNewGame);
     client.on('joinGame', handleJoinGame);
 
-    function handleJoinGame(gameCode) {
-      const room = io.sockets.adapter.rooms[gameCode];
-
+    function handleJoinGame(roomName) {
+      // const room = io.sockets.adapter.rooms[roomName];
+      const room = io.sockets.adapter.rooms.get(roomName);
       let allUsers;
       if (room) {
-        allUsers = room.sockets;
+        // allUsers = room.sockets;
+        allUsers = [];
+        for (i of room) {
+          allUsers.push(i);
+        }
       }
 
       let numClients = 0;
       if (allUsers) {
-        numClients = Object.keys[allUsers].length;
+        // numClients = Object.keys(allUsers).length;
+        numClients = allUsers.length;
       }
 
       if (numClients === 0) {
@@ -44,13 +50,13 @@ io.on('connection', client => {
         return;
       }
 
-      clientRooms[client.id] = gameCode;
+      clientRooms[client.id] = roomName;
 
-      client.join[gameCode];
+      client.join(roomName);
       client.number = 2;
       client.emit('init', 2);
 
-      startGameInterval(gameCode);
+      startGameInterval(roomName);
     }
 
     function handleNewGame() {
@@ -104,8 +110,8 @@ function startGameInterval(roomName) {
 }
 
 function emitGameState(roomName, state) {
-  io.socket.in(roomName)
-  .emit('gameState', JSON.stringify(state));
+  io.sockets.in(roomName)
+    .emit('gameState', JSON.stringify(state));
 }
 
 function emitGameOver(roomName, winner) {
