@@ -3,7 +3,13 @@ const app = express();
 const path = require('path');
 const http = require("http").createServer(app);
 // const io = require('socket.io')(http);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+  cors: {
+    origin: ["*:*"],
+    methods: ["GET", "POST"]
+  }, 
+  allowEIO3: true
+});
 
 const { initGame, gameLoop, getUpdatedVelocity } = require('./game');
 const { FRAME_RATE } = require('./constants');
