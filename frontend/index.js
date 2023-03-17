@@ -1,5 +1,5 @@
 const BG_COLOUR = '#231f20';
-const SNAKE_COLOUR = '#c2c2c2';
+const SNAKE_COLOUR = '#6cbb3c';
 const FOOD_COLOUR = '#e66916';
 
 const socket = io('http://localhost:3000', {
@@ -80,7 +80,7 @@ function paintGame(state) {
     ctx.fillRect(food.x * size, food.y * size, size, size);
 
     paintPlayer(state.players[0], size, SNAKE_COLOUR);
-    paintPlayer(state.players[1], size, 'red');
+    paintPlayer(state.players[1], size, 'blue');
 }
 
 function paintPlayer(playerState, size, colour) {

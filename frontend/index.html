@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MultiPlayer Snake</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -13,21 +14,21 @@
         <div class="container h-100">
             <div id="initialScreen" class="h-100">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
-                    <h1>MultiPlayer Snake</h1>
-                    <button
+                    <img src="https://invisioncommunity.co.uk/wp-content/uploads/2016/09/snake-pass.png" alt="Snake logo">
+                    <button 
                         type="submit"    
-                        class="btn btn-success"
+                        class=" game-button"
                         id="newGameButton"
                     >
                         Create New Game
                     </button>
-                    <div>OR</div>
+                    <div id="or">OR</div>
                     <div class="form-group">
                         <input type="text" placeholder="Enter Game Code" id="gameCodeInput">
                     </div>
                     <button
                         type="submit"
-                        class="btn btn-success"
+                        class=" game-button green "
                         id="joinGameButton"
                     >
                         Join Game
