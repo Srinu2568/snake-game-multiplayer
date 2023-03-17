@@ -2,9 +2,9 @@ const BG_COLOUR = '#231f20';
 const SNAKE_COLOUR = '#6cbb3c';
 const FOOD_COLOUR = '#e66916';
 
-const socket = io('http://localhost:3000', {
+const socket = io('https://snake-pass.onrender.com', {
   extraHeaders: {
-      "Access-Control-Allow-Origin": "http://localhost:8080"
+      "Access-Control-Allow-Origin": "*:*"
   },
   transports: ['websocket']
 });

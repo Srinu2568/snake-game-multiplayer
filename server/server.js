@@ -4,7 +4,7 @@ const http = require("http").createServer(app);
 // const io = require('socket.io')(http);
 const io = require('socket.io')(http, {
   cors: {
-    origin: ["http://localhost:8080"],
+    origin: ["https://snake-frontend-jurq.onrender.com"],
     methods: ["GET", "POST"]
   }, 
   allowEIO3: true
@@ -16,6 +16,10 @@ const { makeid } = require('./util');
 
 const state = {};
 const clientRooms = {};
+
+app.get('/healthz', (req, res, next) => {
+  return res.status(200).send('OK');
+})
 
 // On connection we get back a socket (we named it as client here)
 io.on('connection', client => {
