@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
+const path = require('path');
 const http = require("http").createServer(app);
 // const io = require('socket.io')(http);
 const io = require('socket.io')(http, {
   cors: {
-    origin: ["https://snake-frontend-jurq.onrender.com"],
+    origin: ["*:*"],
     methods: ["GET", "POST"]
   }, 
   allowEIO3: true
@@ -16,6 +17,12 @@ const { makeid } = require('./util');
 
 const state = {};
 const clientRooms = {};
+
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+app.get('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+})
 
 app.get('/healthz', (req, res, next) => {
   return res.status(200).send('OK');
