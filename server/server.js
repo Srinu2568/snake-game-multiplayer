@@ -101,25 +101,31 @@ io.on('connection', client => {
       const vel = getUpdatedVelocity(keyCode);
 
       if (vel && state.length !== 0) { // Update velocity of players based on current player
-        if (state[roomName].players[client.number - 1].vel.x === 1 && vel.x === -1){
-         //pass 
-        }
-        else if (state[roomName].players[client.number - 1].vel.x === -1 && vel.x === 1) {
-          //pass
-        } 
-        else if (state[roomName].players[client.number - 1].vel.y === 1 && vel.y === -1) {
-          //pass
-        } 
-        else if (state[roomName].players[client.number - 1].vel.y === -1 && vel.y === 1) {
-          //pass
-        } 
-        else {
-          try {
-            state[roomName].players[client.number - 1].vel = vel;      
-          } catch(err) {
-            console.log(err);
-            // return;
+        try {
+          if (state[roomName].players[client.number - 1].vel.x === 1 && vel.x === -1){
+          //pass 
           }
+          else if (state[roomName].players[client.number - 1].vel.x === -1 && vel.x === 1) {
+            //pass
+          } 
+          else if (state[roomName].players[client.number - 1].vel.y === 1 && vel.y === -1) {
+            //pass
+          } 
+          else if (state[roomName].players[client.number - 1].vel.y === -1 && vel.y === 1) {
+            //pass
+          } 
+          else {
+            try {
+              state[roomName].players[client.number - 1].vel = vel;      
+            } catch(err) {
+              console.log(err);
+              //pass
+              // return;
+            }
+          }
+        } catch(err) {
+          console.log(err);
+          //pass
         }
       }
     }
