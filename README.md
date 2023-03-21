@@ -2,6 +2,13 @@
 
 # snake-game-multiplayer
 A 2d multiplayer snake game using socket io.
+
+# Getting started
+* To start the development server, go in to your terminal and change the directory to server ```cd server```, then type ```npx nodemon server.js```.
+* On your browser open [localhost:3000](http://localhost:300) to start the game.
+
+# Deployment
+The game is deployed on render.
 You can find the game [here](https://snake-pass.onrender.com/).
 
 
