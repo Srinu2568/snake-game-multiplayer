@@ -2,7 +2,7 @@
 
 # snake-game-multiplayer
 A 2d multiplayer snake game using socket io.
-You ccan find the game ![here](https://snake-pass.onrender.com/).
+You can find the game [here](https://snake-pass.onrender.com/).
 
 
 ![demo](https://user-images.githubusercontent.com/86238631/226584911-045902a2-5c44-4b4a-98bf-6dba1fab1053.gif)
