@@ -107,9 +107,13 @@ function handleGameOver(data) {
     }
     data = JSON.parse(data);
     if (data.winner === playerNumber) {
-        alert('You Win!');
+        if(confirm('You Win!')){
+            window.location.reload();  
+        }
     } else {
-        alert('You Lose!');
+        if(confirm('You Lose')){
+            window.location.reload();  
+        }
     }
     gameActive = false;
 }
@@ -120,12 +124,16 @@ function handlegameCode(gameCode) {
 
 function handleUnknownGame() {
     reset();
-    alert('Unknown game Code');
+    if(confirm('Unknown Game Code')){
+        window.location.reload();  
+    }
 }
 
 function handleTooManyPlayers() {
     reset();
-    alert('This game is already in progress');
+    if(confirm('This game is already in progress!')){
+        window.location.reload();  
+    }
 }
 
 function reset() {

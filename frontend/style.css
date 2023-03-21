@@ -156,3 +156,13 @@ canvas {
   background: img('./game_assets/snake_bg.png');
   background-size: 100% 100%;
 }
+
+#gameCode {
+  color: white;
+  font-family: 'Carter One', sans-serif;
+  line-height: 1.5em;
+  letter-spacing: .1em;
+  text-shadow: 2px 2px 1px #0066a2, -2px 2px 1px #0066a2, 2px -2px 1px #0066a2, -2px -2px 1px #0066a2, 0px 2px 1px #0066a2, 0px -2px 1px #0066a2, 0px 4px 1px #004a87, 2px 4px 1px #004a87, -2px 4px 1px  #004a87;
+  border: none;
+  margin: 15px 15px 30px;
+}
