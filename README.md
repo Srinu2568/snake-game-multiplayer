@@ -4,8 +4,10 @@
 A 2d multiplayer snake game using socket io.
 
 # Getting started
-* To start the development server, go in to your terminal and change the directory to server ```cd server```, then type ```npx nodemon server.js```.
-* On your browser open [localhost:3000](http://localhost:300) to start the game.
+* Fork the repo or clone using [https://github.com/Srinu2568/snake-game-multiplayer.git](https://github.com/Srinu2568/snake-game-multiplayer.git).
+* To start the development server, first go in to your terminal and change the directory to server, to do that ```cd server```.
+* Then type ```npx nodemon server.js```.
+* On your browser open [localhost:3000](http://localhost:300) to see the game.
 
 # Deployment
 The game is deployed on render.
