@@ -65,6 +65,8 @@ function keydown(e) { // When ever a key is pressed we send that keyCode to serv
     socket.emit('keydown', e.keyCode);
 }
 
+let prev_state;
+
 function paintGame(state) {
     ctx.fillStyle = BG_COLOUR;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -73,8 +75,17 @@ function paintGame(state) {
     const gridsize = state.gridsize;
     const size = canvas.width / gridsize;
 
-    ctx.fillStyle = FOOD_COLOUR;
-    ctx.fillRect(food.x * size, food.y * size, size, size);
+    // ctx.fillStyle = FOOD_COLOUR;
+    // ctx.fillRect(food.x * size, food.y * size, size, size);
+
+    let newImage = new Image();
+    newImage.src = 'apple.png';
+
+    if (prev_state !== state.food) {
+        prev_state = state.food;
+        // When it loads
+            ctx.drawImage(newImage, food.x*size, food.y*size, size, size);
+    }    
 
     paintPlayer(state.players[0], size, SNAKE_COLOUR);
     paintPlayer(state.players[1], size, 'blue');
