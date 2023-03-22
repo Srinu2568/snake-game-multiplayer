@@ -54,9 +54,6 @@ function init() {
 
     canvas.width = canvas.height = 600;
 
-    ctx.fillStyle = BG_COLOUR;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
     document.addEventListener('keydown', keydown);
     gameActive = true;
 }
@@ -68,9 +65,14 @@ function keydown(e) { // When ever a key is pressed we send that keyCode to serv
 let prev_state;
 
 function paintGame(state) {
-    ctx.fillStyle = BG_COLOUR;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // ctx.fillStyle = BG_COLOUR;
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    let backdrop = new Image();
+    backdrop.src = 'backdrop.png';
+    ctx.drawImage(backdrop, 0, 0, canvas.width, canvas.height);
+    
     const food = state.food;
     const gridsize = state.gridsize;
     const size = canvas.width / gridsize;
