@@ -25,6 +25,8 @@ const newGameButton = document.getElementById('newGameButton');
 const joinGameButton = document.getElementById('joinGameButton');
 const gameCodeInput = document.getElementById('gameCodeInput');
 const gameCodeDisplay = document.getElementById('gameCodeDisplay');
+const wait = document.getElementById('wait');
+
 
 newGameButton.addEventListener('click', newGame);
 joinGameButton.addEventListener('click', joinGame);
@@ -218,6 +220,7 @@ function handleGameState(gameState) {
     if (!gameActive) {
         return;
     }
+    wait.style.display = 'none';
     gameState = JSON.parse(gameState);
     requestAnimationFrame(() => paintGame(gameState));
 }
