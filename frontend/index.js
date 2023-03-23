@@ -82,17 +82,22 @@ function paintGame(state) {
     // ctx.fillStyle = FOOD_COLOUR;
     // ctx.fillRect(food.x * size, food.y * size, size, size);
 
-    let newImage = new Image();
-    newImage.src = 'apple.png';
+    images = loadImages(["apple.png"]);
+    tileimage = images[0];
 
     if (prev_state !== state.food) {
         prev_state = state.food;
         // When it loads
-            ctx.drawImage(newImage, food.x*size, food.y*size, size, size);
+        var tx = 0;
+        var ty = 10;
+        var tilew = 64;
+        var tileh = 64;
+        ctx.drawImage(tileimage, tx*size, ty*size, tilew, tileh, food.x*size, food.y*size, size, size);
+        // ctx.drawImage(tileimage, food.x*size, food.y*size, size, size);
     }    
 
-    paintPlayer(state.players[0], size, SNAKE_COLOUR);
-    paintPlayer(state.players[1], size, 'blue');
+    paintPlayer(state.players[0], size, 'blue');
+    paintPlayer(state.players[1], size, 'yellow');
 }
 
 function loadImages(imagefiles) {
@@ -130,7 +135,12 @@ function loadImages(imagefiles) {
 function paintPlayer(playerState, size, colour) {
     const snake = playerState.snake;
     // Load images
-    images = loadImages(["snake-graphics.png"]);
+    if (colour === 'blue') {
+        images = loadImages(["snake-graphics.png"]);
+    }
+    else if (colour === 'yellow') {
+        images = loadImages(["enemy-snake-graphics.png"]);
+    }
     tileimage = images[0];
     // ctx.fillStyle = colour;
     // for (cell of snake) {
