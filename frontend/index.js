@@ -25,7 +25,10 @@ const newGameButton = document.getElementById('newGameButton');
 const joinGameButton = document.getElementById('joinGameButton');
 const gameCodeInput = document.getElementById('gameCodeInput');
 const gameCodeDisplay = document.getElementById('gameCodeDisplay');
+const foodCount1Selector = document.getElementById('foodCount1');
+const foodCount2Selector = document.getElementById('foodCount2');
 const wait = document.getElementById('wait');
+const score = document.getElementById('score');
 
 
 newGameButton.addEventListener('click', newGame);
@@ -45,6 +48,8 @@ function joinGame() {
 let canvas, ctx;
 let playerNumber;
 let gameActive = false;
+let prevFoodCount1 = 0;
+let prevFoodCount2 = 0;
 
 
 function init() {
@@ -231,7 +236,18 @@ function handleGameState(gameState) {
         return;
     }
     wait.style.display = 'none';
+    score.style.display = 'block';
     gameState = JSON.parse(gameState);
+    // console.log(gameState);
+    foodCount1 = gameState.players[0].foodCount
+    if (prevFoodCount1 !== foodCount1) {
+        foodCount1Selector.innerText = foodCount1.toString();
+    }
+
+    foodCount2 = gameState.players[1].foodCount
+    if (prevFoodCount2 !== foodCount2) {
+        foodCount2Selector.innerText = foodCount2.toString();
+    }
     requestAnimationFrame(() => paintGame(gameState));
 }
 
@@ -243,10 +259,14 @@ function handleGameOver(data) {
     if (data.winner === playerNumber) {
         if(confirm('You Win!')){
             window.location.reload();  
+        } else {
+            window.location.reload();
         }
     } else {
         if(confirm('You Lose')){
             window.location.reload();  
+        } else {
+            window.location.reload();
         }
     }
     gameActive = false;
@@ -276,4 +296,6 @@ function reset() {
     gameCodeDisplay.innerText = '';
     initialScreen.style.display = 'block';
     gameScreen.style.display = 'none';
+    foodCount1Selector.innerText = '0';
+    score.style.display = 'none';
 }

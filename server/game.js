@@ -27,7 +27,8 @@ function createGameState() {
                 {x: 1, y: 10},
                 {x: 2, y: 10},
                 {x: 3, y: 10}
-            ]
+            ],
+            foodCount: 0
         }, {
             pos: {
                 x: 18, 
@@ -41,7 +42,8 @@ function createGameState() {
                 {x: 20, y: 10},
                 {x: 19, y: 10},
                 {x: 18, y: 10}
-            ] 
+            ],
+            foodCount: 0 
         }],
         food: {},
         gridsize: GRID_SIZE,
@@ -75,6 +77,7 @@ function gameLoop(state) {
         playerOne.snake.push({...playerOne.pos}); // Push the current position of the player
         playerOne.pos.x += playerOne.vel.x; // And add velocity
         playerOne.pos.y += playerOne.vel.y;
+        playerOne.foodCount += 1 // Increase food count
         randomFood(state); // Food is missing now so we have to place the food in new position 
     }
 
@@ -82,6 +85,7 @@ function gameLoop(state) {
         playerTwo.snake.push({...playerTwo.pos}); // Push the current position of the player
         playerTwo.pos.x += playerTwo.vel.x; // And add velocity
         playerTwo.pos.y += playerTwo.vel.y;
+        playerTwo.foodCount += 1 // Increase food count
         randomFood(state); // Food is missing now so we have to place the food in new position 
     }
 
