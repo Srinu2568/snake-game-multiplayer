@@ -211,3 +211,23 @@ border-bottom-color: transparent;
   animation-iteration-count:  infinite;
   animation-timing-function: linear; 
 }
+
+#score img {
+  height: 30px;
+  width: 30px;
+}
+
+#score{
+  color: white;
+  font-family: 'Carter One', sans-serif;
+  line-height: 1.5em;
+  letter-spacing: .1em;
+  border: none;
+  align-items: center;
+  align-content: center;
+  background: #494b49c7;
+}
+
+#target {
+  float: right;
+}
