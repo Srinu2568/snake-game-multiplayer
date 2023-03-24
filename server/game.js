@@ -113,6 +113,15 @@ function gameLoop(state) {
         playerTwo.snake.shift();
     }
 
+    // First one to collect 10 fruits wins!
+    if (playerOne.foodCount === 10) {
+        return 1;
+    }
+
+    if (playerTwo.foodCount === 10) {
+        return 2;
+    }
+
     //No winner until now
     return false;
 }

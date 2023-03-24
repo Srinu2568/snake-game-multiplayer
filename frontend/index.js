@@ -77,7 +77,7 @@ function paintGame(state) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let backdrop = new Image();
-    backdrop.src = 'backdrop.png';
+    backdrop.src = './assets/backdrop.png';
     ctx.drawImage(backdrop, 0, 0, canvas.width, canvas.height);
     
     const food = state.food;
@@ -87,18 +87,11 @@ function paintGame(state) {
     // ctx.fillStyle = FOOD_COLOUR;
     // ctx.fillRect(food.x * size, food.y * size, size, size);
 
-    images = loadImages(["apple.png"]);
-    tileimage = images[0];
+    tileimage = loadImages(["./assets/apple.png"])[0];
 
     if (prev_state !== state.food) {
         prev_state = state.food;
-        // When it loads
-        var tx = 0;
-        var ty = 10;
-        var tilew = 64;
-        var tileh = 64;
-        ctx.drawImage(tileimage, tx*size, ty*size, tilew, tileh, food.x*size, food.y*size, size, size);
-        // ctx.drawImage(tileimage, food.x*size, food.y*size, size, size);
+        ctx.drawImage(tileimage, food.x*size, food.y*size, size, size);
     }    
 
     paintPlayer(state.players[0], size, 'blue');
@@ -141,10 +134,10 @@ function paintPlayer(playerState, size, colour) {
     const snake = playerState.snake;
     // Load images
     if (colour === 'blue') {
-        images = loadImages(["snake-graphics.png"]);
+        images = loadImages(["./assets/snake-graphics.png"]);
     }
     else if (colour === 'yellow') {
-        images = loadImages(["enemy-snake-graphics.png"]);
+        images = loadImages(["./assets/enemy-snake-graphics.png"]);
     }
     tileimage = images[0];
     // ctx.fillStyle = colour;
@@ -296,6 +289,5 @@ function reset() {
     gameCodeDisplay.innerText = '';
     initialScreen.style.display = 'block';
     gameScreen.style.display = 'none';
-    foodCount1Selector.innerText = '0';
     score.style.display = 'none';
 }
