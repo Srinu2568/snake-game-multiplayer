@@ -24,9 +24,9 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 })
 
-app.get('/healthz', (req, res, next) => {
-  return res.status(200).send('OK');
-})
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ message: 'Server is up and running' });
+});
 
 // On connection we get back a socket (we named it as client here)
 io.on('connection', client => {
@@ -119,13 +119,13 @@ io.on('connection', client => {
             try {
               state[roomName].players[client.number - 1].vel = vel;      
             } catch(err) {
-              console.log(err);
+              // console.log(err); //pass
               //pass
               // return;
             }
           }
         } catch(err) {
-          console.log(err);
+          // console.log(err); //pass
           //pass
         }
       }
