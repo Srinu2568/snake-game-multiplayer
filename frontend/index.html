@@ -17,7 +17,26 @@
     </video>
     <section class="vh-100">
         <div class="container h-100">
-            <div id="initialScreen" class="h-100">
+            <div id="initialScreen" >
+                
+                <button class="instructions-button" onclick="toggleInstructions()">Instructions</button>
+                
+                <div class="instructions-container">
+                    <button class="close-button" onclick="toggleInstructions()"></button>
+                    <h2 class="instructions-header">Instructions</h2>
+                    <ul class="instructions-list">
+                        <li>Player can Create or join a game.</li>
+                        <li>Player has to share the game code to his enemy.</li>
+                        <li>The person Creates the game will get the Blue Snake <img src="./assets/snake-head.png" alt="blue-snake-head" style="width: 15px; height: 15px;"></li>
+                        <li>Other person will get the Yellow Snake <img src="./assets/enemy-head.png" alt="blue-snake-head" style="width: 15px; height: 15px;"></li>
+                        <li>Game starts when second person joins.</li>
+                        <li>Use arrow keys to move.</li>
+                        <li>Collect apples <img src="./assets/apple.png" alt="apple" style="width: 15px; height: 15px;"> to increase score.</li>
+                        <li>First Person to collect 10 apples wins.</li>
+                        <li>Avoid wall and body bumps to stay alive.</li>
+                    </ul>
+                </div>
+
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
                     <img src="https://invisioncommunity.co.uk/wp-content/uploads/2016/09/snake-pass.png" alt="Snake logo">
                     <button 

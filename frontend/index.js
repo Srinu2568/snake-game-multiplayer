@@ -291,3 +291,13 @@ function reset() {
     gameScreen.style.display = 'none';
     score.style.display = 'none';
 }
+
+function toggleInstructions() {
+    var instructions = document.querySelector('.instructions-container');
+    instructions.classList.toggle('show');
+}
+
+function closeInstructions() {
+    var instructions = document.querySelector('.instructions-container');
+    instructions.classList.remove('show');
+}
