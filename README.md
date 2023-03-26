@@ -21,5 +21,5 @@ You can find the game [here](https://snake-pass.onrender.com/).
 
 * User can create the Room id, and send it to other user or can be joined by an id.
 * After both the users joined, the game starts.
-* The one who bumps first to walls or bumps to their own snake body will lose.
-* Collect as many apples as you can.
+* First person to collect given target number of apples wins!.
+* The one who first bumps to walls or bumps to their own snake body will lose.
