@@ -28,6 +28,10 @@ app.get('/healthz', (req, res) => {
   res.status(200).json({ message: 'Server is up and running' });
 });
 
+app.get('/sitemap.xml', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../sitemap.xml'))
+})
+
 // On connection we get back a socket (we named it as client here)
 io.on('connection', client => {
 
