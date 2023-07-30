@@ -160,6 +160,7 @@ function emitGameState(roomName, state) {
 function emitGameOver(roomName, winner) {
   io.sockets.in(roomName)
     .emit('gameOver', JSON.stringify({ winner }));
+  console.log(`Player ${winner} of the Room '${roomName}' Wins!`)
 }
 
 const port = 3000;
